@@ -1,0 +1,71 @@
+﻿@page
+@using ProductsDB.Models
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <form method="post">
+        <div class="row pt-2">
+            Данные продукта
+        </div>
+        <div class="row pt-2 mb-5">
+            <div class="col-3">
+                <input type="text" class="form-control" asp-for="newProduct.Name" />
+            </div>
+            <div class="col-4">
+                <input type="text"  class="form-control" asp-for="newProduct.Description" />
+            </div>
+            <div class="col-2">
+                <input type="number"  class="form-control" asp-for="newProduct.CategoryId" />
+            </div>
+            <div class="col-1 d-print-none">
+                <input type="submit" value="+" asp-page-handler="SaveProduct" />
+            </div>
+        </div>
+    </form>
+    <form method="post">
+        <div class="row pt-2">
+            Данные категории
+        </div>
+        <div class="row pt-2 mb-5">
+            <div class="col-3">
+                <input type="text" class="form-control" asp-for="newCategory.Name" />
+            </div>
+            <div class="col-4">
+                <input type="text" class="form-control" asp-for="newCategory.Description" />
+            </div>
+            <div class="col-1 d-print-none">
+                <input type="submit" value="+" asp-page-handler="SaveCategory" />
+            </div>
+        </div>
+    </form>
+
+    <div class="row mt-3">
+        Список продуктов
+    </div>
+    @{
+        foreach (Product prod in Model.products)
+        {
+            <div class="row">
+                <div class="col-2">@prod.Name</div>
+                <div class="col-2">@prod.Description</div>
+                <div class="col-2">@prod.CategoryId</div>
+            </div>
+        }
+    }
+    <div class="row mt-3">
+        Список категорий
+    </div>
+    @{
+        foreach (Category cat in Model.categories)
+        {
+            <div class="row">
+                <div class="col-2">@cat.Name</div>
+                <div class="col-2">@cat.Description</div>
+                <div class="col-2">@cat.Id</div>
+            </div>
+        }
+    }
+</div>
