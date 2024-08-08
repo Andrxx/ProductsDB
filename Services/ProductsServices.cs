@@ -41,6 +41,35 @@ namespace ProductsDB.Services
             context.SaveChanges();
         }
 
+        public static List<JoinedData> GetJoinedData(ApplicationDB context)
+        {
+            List<JoinedData> joinedData = new();
+            joinedData = (from product in context.Products
+                          join cat in context.Categories on product.CategoryId equals cat.Id
+                          select new JoinedData
+                          {
+                              ProductName = product.Name,
+                              CategoryName = cat.Name,
+                              ProductDescription = product.Description
+                          }).ToList();
 
+            return joinedData;
+        }
+
+        public static List<JoinedData> GetJoinedData(ApplicationDB context, int categoryId)
+        {
+            List<JoinedData> joinedData = new();
+            joinedData = (from product in context.Products
+             where product.CategoryId == categoryId
+             join cat in context.Categories on product.CategoryId equals cat.Id
+             select new JoinedData
+             {
+                 ProductName = product.Name,
+                 CategoryName = cat.Name,
+                 ProductDescription = product.Description
+             }).ToList();
+          
+            return joinedData;
+        }
     }
 }
