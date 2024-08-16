@@ -25,22 +25,6 @@ namespace ProductsDB.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Customers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    first_name = table.Column<string>(type: "TEXT", nullable: false),
-                    last_name = table.Column<string>(type: "TEXT", nullable: false),
-                    country = table.Column<string>(type: "TEXT", nullable: false),
-                    age = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Customers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -61,9 +45,6 @@ namespace ProductsDB.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Products");
