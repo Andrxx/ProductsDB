@@ -1,0 +1,16 @@
+﻿@page
+@using ProductsDB.Models
+@model ProductsDB.Pages.CustomersModel
+@{
+}
+
+    @{
+        foreach(Customer cus in @Model.customers)
+        {
+            <div class="row">
+                <div class="col-3">
+                @cus.first_name
+                </div>
+            </div>
+        }
+    }

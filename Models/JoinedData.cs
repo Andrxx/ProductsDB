@@ -1,5 +1,8 @@
-﻿namespace ProductsDB.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ProductsDB.Models
 {
+    [NotMapped]
     public class JoinedData
     {
         public string ProductName {  get; set; }

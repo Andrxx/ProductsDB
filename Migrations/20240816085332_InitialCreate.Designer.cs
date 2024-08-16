@@ -10,7 +10,7 @@ using ProductsDB.Models;
 namespace ProductsDB.Migrations
 {
     [DbContext(typeof(ApplicationDB))]
-    [Migration("20240808090927_InitialCreate")]
+    [Migration("20240816085332_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -36,6 +36,32 @@ namespace ProductsDB.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("ProductsDB.Models.Customer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("age")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("country")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("first_name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("last_name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("ProductsDB.Models.Product", b =>
